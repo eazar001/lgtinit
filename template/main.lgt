@@ -1,0 +1,12 @@
+:- object(main).
+
+	:- info([
+		version is 0.1,
+		author is 'FULLNAME',
+		date is y/m/d,
+		comment is 'Description'
+	]).
+
+
+
+:- end_object.
