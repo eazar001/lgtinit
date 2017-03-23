@@ -1,14 +1,15 @@
-#!/bin/bash
 
 if [ -n "$1" ]; then
 	PROJ_NAME=$1
-	LGTINIT_DIR=$HOME/Development/src/lgtinit
+	LGTINIT_DIR=$PREFIX/share/lgtinit_template
 
 	mkdir -p "$PROJ_NAME"
 
-	for file in $LGTINIT_DIR/template/*; do
+	for file in $LGTINIT_DIR/*; do
 		cp $file $PROJ_NAME/
 	done
+
+	cp "$LGTINIT_DIR/.gitignore" $PROJ_NAME
 
 	mv "$PROJ_NAME/main.lgt" "$PROJ_NAME/$PROJ_NAME.lgt"
 	sed -i "s/:- object(main)/:- object($PROJ_NAME)/" $PROJ_NAME/$PROJ_NAME.lgt

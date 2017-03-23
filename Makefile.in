@@ -1,0 +1,15 @@
+.PHONY: install
+install:
+	mkdir -p $(PREFIX)/bin
+	mkdir -p $(PREFIX)/share/lgtinit_template
+	cp -a lgtinit.sh $(PREFIX)/bin
+	cp -r template/. $(PREFIX)/share/lgtinit_template
+
+.PHONY: uninstall
+uninstall: clean
+	rm $(PREFIX)/bin/lgtinit.sh
+	rm -rf $(PREFIX)/share/lgtinit_template
+
+.PHONY: clean
+clean:
+	rm -f Makefile lgtinit.sh
