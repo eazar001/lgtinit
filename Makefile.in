@@ -12,4 +12,4 @@ uninstall: clean
 
 .PHONY: clean
 clean:
-	rm -f Makefile lgtinit.sh
+	rm -f lgtinit.sh Makefile

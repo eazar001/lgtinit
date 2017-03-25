@@ -1,5 +1,15 @@
 
+if [ -n "$2" ]; then
+	echo "You must enter a project name only."
+	exit 1
+fi
+
 if [ -n "$1" ]; then
+	if [ "$1" == "tests" ] || [ "$1" == "tester" ] || [ "$1" == "loader" ]; then
+		echo "Invalid project name."
+		exit 1
+	fi
+
 	PROJ_NAME=$1
 	LGTINIT_DIR=$PREFIX/share/lgtinit_template
 
