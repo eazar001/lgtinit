@@ -25,6 +25,10 @@ if [ -n "$1" ]; then
 	sed -i "s/:- object(main)/:- object($PROJ_NAME)/" $PROJ_NAME/$PROJ_NAME.lgt
 	sed -i "s/logtalk_load(main)/logtalk_load($PROJ_NAME)/" $PROJ_NAME/loader.lgt
 	sed -i "s/logtalk_load(main/logtalk_load($PROJ_NAME/" $PROJ_NAME/tester.lgt
+
+	pushd $PROJ_NAME
+	git init
+	popd
 else
 	echo "No project name provided."
 fi
