@@ -12,3 +12,9 @@ $ make install
 Run `make install` with the appropriate permissions for your the specified path. Template files will
 be installed in the `share` directory of `PREFIX_PATH`, and the executable will be installed to
 the `bin` directory of `PREFIX_PATH`.
+
+usage
+-----
+```
+$ lgtinit.sh name_of_your_project
+```
