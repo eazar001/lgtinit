@@ -17,4 +17,7 @@ usage
 -----
 ```
 $ lgtinit.sh name_of_your_project
+
+# the --git flag option initializes defaults for .gitignore and initializes a git project
+$ lgtinit.sh --git name_of_your_project
 ```
