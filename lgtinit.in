@@ -1,16 +1,32 @@
-
-if [ -n "$2" ]; then
-	echo "You must enter a project name only."
-	exit 1
-fi
-
 if [ -n "$1" ]; then
-	if [ "$1" == "tests" ] || [ "$1" == "tester" ] || [ "$1" == "loader" ]; then
+
+	GIT=0
+
+	if [ "$1" == "--git" ]; then
+		GIT=1
+
+		if [ -z "$2" ]; then
+			echo "You must enter a project name."
+			exit 1
+		else
+			PROJ_NAME=$2
+		fi
+
+		if [ "$2" == "tests" ] || [ "$2" == "tester" ] || [ "$2" == "loader" ]; then
+			echo "Invalid project name."
+		fi
+
+	elif [ "$1" == "tests" ] || [ "$1" == "tester" ] || [ "$1" == "loader" ]; then
 		echo "Invalid project name."
 		exit 1
+
+	elif [ "$1" != "--git" ] && [ -n "$2" ]; then
+		echo "First argument must either be --git or a project name with no other arguments."
+		exit 1
+	else
+		PROJ_NAME=$1
 	fi
 
-	PROJ_NAME=$1
 	LGTINIT_DIR=$PREFIX/share/lgtinit_template
 
 	mkdir -p "$PROJ_NAME"
@@ -19,16 +35,18 @@ if [ -n "$1" ]; then
 		cp $file $PROJ_NAME/
 	done
 
-	cp "$LGTINIT_DIR/.gitignore" $PROJ_NAME
-
 	mv "$PROJ_NAME/main.lgt" "$PROJ_NAME/$PROJ_NAME.lgt"
 	sed -i "s/:- object(main)/:- object($PROJ_NAME)/" $PROJ_NAME/$PROJ_NAME.lgt
 	sed -i "s/logtalk_load(main)/logtalk_load($PROJ_NAME)/" $PROJ_NAME/loader.lgt
 	sed -i "s/logtalk_load(main/logtalk_load($PROJ_NAME/" $PROJ_NAME/tester.lgt
 
-	pushd $PROJ_NAME
-	git init
-	popd
+	if [ $GIT -eq 1 ]; then
+		cp "$LGTINIT_DIR/.gitignore" $PROJ_NAME
+		pushd $PROJ_NAME
+		git init
+		popd
+	fi
+
 else
 	echo "No project name provided."
 fi
