@@ -9,7 +9,7 @@ $ ./configure --prefix=PREFIX_PATH
 $ make install
 ```
 
-Run `make install` with the appropriate permissions for your the specified path. Template files will
+Run `make install` with the appropriate permissions for your specified path. Template files will
 be installed in the `share` directory of `PREFIX_PATH`, and the executable will be installed to
 the `bin` directory of `PREFIX_PATH`.
 
