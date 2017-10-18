@@ -4,7 +4,7 @@
 	:- info([
 		version is 0.1,
 		author is 'FULLNAME',
-		date is date is y/m/d,
+		date is y/m/d,
 		comment is 'Description'
 	]).
 
