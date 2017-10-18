@@ -1,7 +1,7 @@
 lgtinit
 -------
 
-`lgtinit` is a script that initializes basic logtalk project scaffolding from some template files.
+`lgtinit` is a script that initializes basic Logtalk project scaffolding from some template files.
 
 To install `lgtinit` please run:
 ```
